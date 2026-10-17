@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Animal Hospital 진료실 미니게임</title>
+<title>Animal Hospital 진료실 쟁탈전</title>
 <style>
   :root {
     --bg:#081412; --panel:#0f201c; --panel-alt:#142822;
@@ -122,7 +122,7 @@
 <script>
 (function(){
   'use strict';
-  var TEAMS = ['원무', '진료', '방재', '보안'];
+  var TEAMS = ['원무', '진료', '방재', '보안','인턴'];
   var SPECIES = [
     {name:'토끼', emoji:'🐇'}, {name:'고양이', emoji:'🐈'}, {name:'개', emoji:'🐕'},
     {name:'여우', emoji:'🦊'}, {name:'곰', emoji:'🐻'}, {name:'양', emoji:'🐑'},
@@ -449,8 +449,8 @@
       var b = bestOf(k);
       return '<button class="menu-item" data-act="open" data-game="' + k + '"><span class="mi-title">' + GAMES[k].title + '</span><span class="mi-desc">' + GAMES[k].short + (b ? ' · 내 최고 ' + b + '점' : '') + '</span></button>';
     }).join('');
-    return shell(chrome('진료실 미니게임', '', '') +
-      '<header class="top"><p class="eyebrow">팀 대항 땅따먹기 · 미니게임 센터</p><h1>도전할 게임을 고르세요.</h1>' +
+    return shell(chrome('진료실 쟁탈전', '', '') +
+      '<header class="top"><p class="eyebrow">진료실 쟁탈전 · 미니게임 센터</p><h1>도전할 게임을 고르세요.</h1>' +
       '<p class="lede">모든 게임은 실패할 때까지 계속되는 기록 도전형입니다. 각 게임의 최고 점수 팀이 진료실을 차지합니다.</p></header>' +
       '<div class="menu-list">' + items + '<div class="menu-item menu-item--locked"><span class="mi-title">\uD83D\uDD12 준비 중</span><span class="mi-desc">추가 진료실 게임은 오픈 때 공개됩니다.</span></div></div>' +
       '<p class="footnote">게임이 끝나면 결과 화면(이름 · 팀 · 점수 · 시각)을 캡처해서 제출해 주세요.</p>');
@@ -463,7 +463,7 @@
     return shell(chrome(g.title, '', lockedGame ? '' : 'menu') +
       '<section class="patient-card"><p class="eyebrow">참가 등록' + (b ? ' · 내 최고 기록 ' + b + '점' : '') + '</p><p class="rule-text">' + g.rule + '</p>' +
       '<label class="field-label" for="name">이름</label>' +
-      '<input id="name" type="text" maxlength="16" autocomplete="off" placeholder="커뮤니티 닉네임" value="' + esc(player.name) + '">' +
+      '<input id="name" type="text" maxlength="16" autocomplete="off" placeholder="동물 병원 닉네임" value="' + esc(player.name) + '">' +
       '<span class="field-label" id="team-label">소속 팀</span>' +
       '<div class="chips" role="radiogroup" aria-labelledby="team-label">' + chips + '</div>' +
       '<p class="hint" id="setup-msg"></p></section>' +
